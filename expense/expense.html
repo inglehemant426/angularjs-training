@@ -26,7 +26,7 @@
                 <td>{{list.date}}</td>
                 <td>{{list.modeOfPayment}}</td>
                 <td>
-                    <button class="btn btn-primary" ng-click="compose(list)">Edit</button>
+                    <button class="btn btn-primary" ng-click="compose(list,list.date)">Edit</button>
                 </td>
                 <td>
                     <button class="btn btn-primary" ng-click="removeExpense($index)">Delete</button>
@@ -34,8 +34,9 @@
             </tr>
         </tbody>
     </table>
+    <!--<pre>{{expenseArray}}</pre>-->
     <!--Add New Expense -->
-    <button type="button" class="btn btn-success btn-lg btn-block" ng-click="AddNewExpenseBtn()"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span>Add New Expense</button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="AddNewExpenseBtn()"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span>Add New Expense</button>
 </div>
 
 <div class="container mtop">
@@ -54,10 +55,14 @@
                 <label>Payee</label>
                 <input type="text" class="form-control" ng-model="newListing.payee" required ng-pattern="/^[a-zA-Z]*$/">
             </div>
-
             <div class="form-group">
-                <label>Category</label>
-                <input type="text" class="form-control" ng-model="newListing.category" required ng-pattern="/^[a-zA-Z]*$/">
+                <select class="form-control" ng-model="newListing.category">
+                    <option value="">Select</option>
+                    <option value="shopping">Shopping</option>
+                    <option value="entertainment">Entertainment</option>
+                    <option value="grocery">Grocery</option>
+                    <option value="movie">Movie</option>
+                 </select>
             </div>
             <div class="form-group">
                 <label>Sub Category</label>
@@ -69,7 +74,7 @@
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Date</label>
-                <input type="text" class="form-control" ng-model="newListing.date" placeholder="10-09-15" required>
+                <input type="date" class="form-control" ng-model="newListing.date" placeholder="10-09-15" required>
             </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Mode Of Payment</label>
@@ -109,7 +114,7 @@
             </div>
             <div class="form-group">
                 <label>Date</label>
-                <input type="text" class="form-control" ng-model="composeData.date" required>
+                <input type="date" class="form-control" ng-model="composeData.date" required>
             </div>
             <div class="form-group">
                 <label>Mode Of Payment</label>

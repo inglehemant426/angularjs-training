@@ -23,6 +23,10 @@ expenseMngrApp.config(['$routeProvider',
         templateUrl: 'reports/reports.html',
         controller: 'ReportCtrl'
       }).
+    when('/notification', {
+        templateUrl: 'notification/notification.html',
+        controller: 'notificationCtrl'
+      }).
       otherwise({
         redirectTo: '/dashboard'
       });

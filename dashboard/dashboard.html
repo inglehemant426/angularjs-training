@@ -14,9 +14,9 @@
     </thead>
     <tbody>
         <tr>
-            <td ng-bind="incomeTotal"></td>
-            <td ng-bind="expenseTotal"></td>
-            <td ng-bind="incomeTotal - expenseTotal"></td>
+            <td ng-bind="incomeTotal | number:2"></td>
+            <td ng-bind="expenseTotal | number:2"></td>
+            <td ng-bind="incomeTotal - expenseTotal | number:2"></td>
         </tr>
     </tbody>
 </table>

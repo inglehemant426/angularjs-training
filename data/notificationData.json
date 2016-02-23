@@ -1,0 +1,15 @@
+[
+
+    {
+        "category": "Interest",
+        "subCategory": "Fix Deposit",
+        "transactionType": "Income",
+        "RecurringType": "Monthly"
+},
+    {
+        "category": "Shares",
+        "subCategory": "Equity",
+        "transactionType": "Expense",
+        "RecurringType": "Monthly"
+}
+]
