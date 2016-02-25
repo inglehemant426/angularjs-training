@@ -4,16 +4,17 @@ var karma = require('gulp-karma');
 var allFiles = [
 
   /* Library files */
-  'libs/angular/angular.js',
-  'libs/angular-route.min.js',
+  'EM/libs/angular.min.js',
+  'EM/libs/angular-route.min.js',
  
+    
   /* Custom Files*/
-  'libs/angular-route.min.js',
-  'app.js',
-  'expense/**/*.js',
+  
+  'EM/app.js',
+  'EM/expense/**/*.js',
 
   /* Testing library and specs files*/
-  'libs/angular-mocks/angular-mocks.js',
+  'EM/libs/angular-mocks.js',
   'test/unit-tests/**/*.js'
 ];
 gulp.task('test', function (coverage) {

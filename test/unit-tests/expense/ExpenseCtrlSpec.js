@@ -15,7 +15,8 @@ describe('ExpenseCtrl Test Suite', function() {
 
     var currentDate = new Date().getDate();
     expect(currentDate).toEqual($scope.newListing.fullDate.getDate());
-    expect($scope.expVisible).toBe(false);
+    expect($scope.editable).toBe(false);
+       expect($scope.expVisible).toBe(false);
   });
 
   it('Unit test for adding expense', function() {
@@ -39,6 +40,31 @@ describe('ExpenseCtrl Test Suite', function() {
 
     expect($scope.expenseArray.length).toEqual(noOfExpenses + 1);
   });
+    
+    it('Unit test for compose expense', function() {
+    var currentDate = new Date();
+    var expense = {
+      fullDate: currentDate,
+        date: currentDate.getDate() + '-' + (currentDate.getMonth() + 1) + '-' + currentDate.getFullYear(),
+      transactionId: 1,
+      payer: 'TEST',
+      payee: 'TEST',
+      category: 'TEST',
+      subCategory: 'TEST',
+      amount: 100,
+      modeOfPayment: 'TEST'
+    };
+
+    var $scope = {};
+    var controller = $controller('ExpenseCtrl', { $scope: $scope });
+
+     
+    $scope.compose(expense);
+
+    expect($scope.editable).toBe(true);
+  });
+    
+   
 
 
 });

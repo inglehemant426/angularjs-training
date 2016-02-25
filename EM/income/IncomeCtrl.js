@@ -14,7 +14,7 @@
              * @memberOf ExpenseCtrl
              */
 
-            $scope.incomeArray;
+            $scope.incomeArray = [];
             var promise = incomeService.getIncomeDetails();
             promise.then(function (data) {
                 $scope.incomeArray = data.data;

@@ -19,7 +19,7 @@ module.exports = function(config) {
       '../**/*.html'
     ],
     preprocessors: {
-      'EM/!(lib)/**/*.js': ['coverage']
+      'EM/!(libs)/**/*.js': ['coverage']
     },
     ngHtml2JsPreprocessor: {
       // setting this option will create only a single module that contains templates

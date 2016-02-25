@@ -22,11 +22,11 @@
                 <td>{{list.payee}}</td>
                 <td>{{list.category}}</td>
                 <td>{{list.subCategory}}</td>
-                <td>{{list.amount | number:2}}</td>
-                <td>{{list.date}}</td>
+                <td>{{list.amount}}</td>
+                <td> {{list.date}}</td>
                 <td>{{list.modeOfPayment}}</td>
                 <td>
-                    <button class="btn btn-primary" ng-click="compose(list,list.date)">Edit</button>
+                    <button class="btn btn-primary" ng-click="compose(list)">Edit</button>
                 </td>
                 <td>
                     <button class="btn btn-primary" ng-click="removeExpense($index)">Delete</button>
@@ -34,9 +34,8 @@
             </tr>
         </tbody>
     </table>
-    <!--<pre>{{expenseArray}}</pre>-->
     <!--Add New Expense -->
-    <button type="button" class="btn btn-primary btn-lg btn-block" ng-click="AddNewExpenseBtn()"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span>Add New Expense</button>
+    <button type="button" class="btn btn-success btn-lg btn-block" ng-click="AddNewExpenseBtn()"><span aria-hidden="true" class="glyphicon glyphicon-plus"></span>Add New Expense</button>
 </div>
 
 <div class="container mtop">
@@ -55,29 +54,25 @@
                 <label>Payee</label>
                 <input type="text" class="form-control" ng-model="newListing.payee" required ng-pattern="/^[a-zA-Z]*$/">
             </div>
+
             <div class="form-group">
-                <select class="form-control" ng-model="newListing.category">
-                    <option value="">Select</option>
-                    <option value="shopping">Shopping</option>
-                    <option value="entertainment">Entertainment</option>
-                    <option value="grocery">Grocery</option>
-                    <option value="movie">Movie</option>
-                 </select>
+                <label>Category</label>
+                <input type="text" class="form-control" ng-model="newListing.category">
             </div>
             <div class="form-group">
                 <label>Sub Category</label>
-                <input type="text" class="form-control" ng-model="newListing.subCategory" required ng-pattern="/^[a-zA-Z]*$/">
+                <input type="text" class="form-control" ng-model="newListing.subCategory"  required ng-pattern="/^[a-zA-Z]*$/">
             </div>
             <div class="form-group">
                 <label>Amount</label>
                 <input type="text" class="form-control" ng-model="newListing.amount" required ng-pattern="/^[0-9]*$/">
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Date</label>
-                <input type="date" class="form-control" ng-model="newListing.date" placeholder="10-09-15" required>
+                <label >Date</label>
+                <input type="date" class="form-control" ng-model="newListing.fullDate" >
             </div>
             <div class="form-group">
-                <label for="exampleInputEmail1">Mode Of Payment</label>
+                <label>Mode Of Payment</label>
                 <input type="text" class="form-control" ng-model="newListing.modeOfPayment" required>
             </div>
             <button type="submit" ng-click="addExpense(newListing);" class="btn btn-primary" ng-disabled="addExpenseForm.$pristine || addExpenseForm.$dirty && addExpenseForm.$invalid">Add Expense</button>
@@ -86,41 +81,41 @@
     <!--Edit Income div-->
     <div class="col-sm-4" ng-if="editable">
         <h2>Edit Expense </h2>
-        <form name="editExpenseForm" id="editExpenseForm">
+        <form>
             <div class="form-group">
                 <label>TransactionId</label>
-                <input type="number" class="form-control" ng-model="composeData.transactionId" placeholder="" required ng-pattern="/^[0-9]*$/">
+                <input type="number" class="form-control" ng-model="composeData.transactionId" placeholder="">
             </div>
             <div class="form-group">
                 <label>Payer</label>
-                <input type="text" class="form-control" ng-model="composeData.payer" required ng-pattern="/^[a-zA-Z]*$/">
+                <input type="text" class="form-control" ng-model="composeData.payer">
             </div>
             <div class="form-group">
                 <label>Payee</label>
-                <input type="text" class="form-control" ng-model="composeData.payee" required ng-pattern="/^[a-zA-Z]*$/">
+                <input type="text" class="form-control" ng-model="composeData.payee">
             </div>
 
             <div class="form-group">
                 <label>Category</label>
-                <input type="text" class="form-control" ng-model="composeData.category" required ng-pattern="/^[a-zA-Z]*$/">
+                <input type="text" class="form-control" ng-model="composeData.category">
             </div>
             <div class="form-group">
                 <label>Sub Category</label>
-                <input type="text" class="form-control" ng-model="composeData.subCategory" required ng-pattern="/^[a-zA-Z]*$/">
+                <input type="text" class="form-control" ng-model="composeData.subCategory">
             </div>
             <div class="form-group">
                 <label>Amount</label>
-                <input type="number" class="form-control" ng-model="composeData.amount" ng-pattern="/^[0-9]*$/">
+                <input type="number" class="form-control" ng-model="composeData.amount">
             </div>
             <div class="form-group">
                 <label>Date</label>
-                <input type="date" class="form-control" ng-model="composeData.date" required>
+                <input type="date" class="form-control" ng-model="composeData.fullDate">
             </div>
             <div class="form-group">
                 <label>Mode Of Payment</label>
-                <input type="text" class="form-control" ng-model="composeData.modeOfPayment" required>
+                <input type="text" class="form-control" ng-model="composeData.modeOfPayment">
             </div>
-            <button type="submit" ng-click="saveComposition();" class="btn btn-primary" ng-disabled="editExpenseForm.$pristine || editExpenseForm.$dirty && editExpenseForm.$invalid">Save Income</button>
+            <button type="submit" ng-click="saveComposition(composeData);" class="btn btn-primary">Save Income</button>
         </form>
     </div>
 </div>
